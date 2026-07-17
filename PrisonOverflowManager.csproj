@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyName>PrisonOverflowManager</AssemblyName>
+    <RootNamespace>PrisonOverflowManager</RootNamespace>
+    <LangVersion>9.0</LangVersion>
+    <Configurations>Debug;Release</Configurations>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <!-- Imports from the CS2 Modding Toolchain (install via in-game Options -> Modding).
+       These set up reference paths, deploy the built DLL to the local Mods folder,
+       and enable Paradox Mods publishing. -->
+  <Import Project="$(CSII_TOOLPATH)\Mod.props" />
+  <Import Project="$(CSII_TOOLPATH)\Mod.targets" />
+
+  <ItemGroup>
+    <!-- Lets the mod build with just the dotnet SDK (no Visual Studio /
+         .NET Framework 4.8 Developer Pack needed). -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Game">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Colossal.Core">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Colossal.Logging">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Colossal.IO.AssetDatabase">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Colossal.Localization">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Colossal.UI.Binding">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Entities">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
