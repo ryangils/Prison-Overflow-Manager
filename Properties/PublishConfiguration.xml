@@ -31,6 +31,7 @@ Unlike blunt "remove crime" mods, the loop stays intact: you still build prisons
   <!-- Add a 1:1 PNG (min 256x256) before publishing. -->
   <Thumbnail Value="Properties/Thumbnail.png" />
   <Tag Value="Code Mod" />
+  <ForumLink Value="https://forum.paradoxplaza.com/forum/threads/prison-overflow-manager-beta.1935235/" />
   <ModVersion Value="1.0.0" />
   <GameVersion Value="1.6.*" />
   <ChangeLog>
