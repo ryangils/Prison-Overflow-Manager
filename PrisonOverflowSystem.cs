@@ -36,6 +36,15 @@ namespace PrisonOverflowManager
         /// </summary>
         public const int kRecoveryFrames = kFramesPerDay;
 
+        /// <summary>
+        /// Master gate for the early-release fallback. Held false while the feature is still being
+        /// verified in-game: the option stays visible in the UI but is locked off, and this system
+        /// never runs the release path regardless of any value persisted in a settings file. Flip
+        /// this one field to true — no other change needed — once early release has been confirmed
+        /// working in a throwaway save.
+        /// </summary>
+        public static readonly bool EarlyReleaseAvailable = false;
+
         /// <summary>Sentenced criminals currently awaiting a prison van, as of the last sweep.</summary>
         public static int CurrentBacklog;
 
@@ -156,7 +165,7 @@ namespace PrisonOverflowManager
                 RestoreScaling();
             }
 
-            if (setting.EnableEarlyRelease)
+            if (EarlyReleaseAvailable && setting.EnableEarlyRelease)
             {
                 var graceFrames = (uint)((long)Clamp(setting.ReleaseGraceDays, 1, 30) * kFramesPerDay);
                 TotalReleased += EarlyRelease(setting, frame, graceFrames);

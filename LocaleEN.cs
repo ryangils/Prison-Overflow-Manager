@@ -39,8 +39,8 @@ namespace PrisonOverflowManager
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ScaleFactor)), "Scaled capacity" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ScaleFactor)), "Prison van capacity while a backlog is being cleared, as a percentage of each prison's normal capacity. 100% disables scaling in practice." },
 
-                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.EnableEarlyRelease)), "Release permanently stuck prisoners (last resort)" },
-                { m_Setting.GetOptionDescLocaleID(nameof(Setting.EnableEarlyRelease)), "Off by default. When the city is still backlogged despite scaling, frees sentenced criminals who have been waiting for a prison van longer than the grace period below. They simply stop being criminals and leave the police station, freeing its cells. Use this only for saves where prisoners never get collected — for example a city with no prison at all." },
+                { m_Setting.GetOptionLabelLocaleID(nameof(Setting.EnableEarlyRelease)), "Release permanently stuck prisoners (last resort — coming soon)" },
+                { m_Setting.GetOptionDescLocaleID(nameof(Setting.EnableEarlyRelease)), "Temporarily locked while this last-resort option is verified in-game; it will be unlocked in a future update. When enabled, and when the city is still backlogged despite scaling, it frees sentenced criminals who have been waiting for a prison van longer than the grace period below. They simply stop being criminals and leave the police station, freeing its cells. Intended only for saves where prisoners never get collected — for example a city with no prison at all." },
 
                 { m_Setting.GetOptionLabelLocaleID(nameof(Setting.ReleaseGraceDays)), "Grace period (in-game days)" },
                 { m_Setting.GetOptionDescLocaleID(nameof(Setting.ReleaseGraceDays)), "How long a sentenced criminal must be waiting for a prison van before the last-resort release frees them. Counting restarts when a save is loaded." },

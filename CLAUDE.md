@@ -5,8 +5,13 @@ Fourth mod in the set alongside sibling projects `../AutoBulldozer`, `../Buildin
 conventions, same toolchain). This mod is a near-direct port of Cemetery Overflow Manager's
 architecture to the prison-transport domain.
 
-**Status (2026-07-17 evening): PUBLISHED — ModId 151632, v1.0.0, account lukyguy117, display name
-"Prison Overflow Manager [Beta]".** Soft scaling verified in-game on a real city before release
+**Status (2026-07-18): PUBLISHED — ModId 151632, account lukyguy117, display name "Prison Overflow
+Manager [Beta]". Current live version: v1.0.1, which LOCKS early release** (see "Early-release lock"
+below). Early release is gated off by `PrisonOverflowSystem.EarlyReleaseAvailable = false` until
+it's verified in-game; flip that one field to `true` and re-publish to unlock it. Soft scaling
+remains verified and unchanged.
+
+**v1.0.0 baseline:** Soft scaling verified in-game on a real city before release
 (first test session below); the shipped build includes the restore-counter fix (rebuilt after the
 tested session — the fix is cosmetic, counters only). **Early release shipped UNVERIFIED** (off by
 default; the release path, the dip-tolerance guard, and the recovery reset have never executed
@@ -84,6 +89,28 @@ assumed. Full findings mirrored to the user's memory as `cs2-prison-ecs-findings
 Enable ON, soft scaling ON, backlog threshold 10 (prison backlogs run smaller than death waves —
 cemetery defaulted to 20), scale factor 200% (van 10→20, matching Prefab Asset Fixes), early release
 OFF, grace 7 days, 16 sweeps/day.
+
+## Early-release lock (v1.0.1, 2026-07-18)
+
+Rather than remove the unverified early-release feature, it's locked behind one gate so unlocking
+later is a single-field flip. The mechanism, in three coordinated places all keyed off
+`PrisonOverflowSystem.EarlyReleaseAvailable` (a `static readonly bool`, currently `false`):
+
+1. **System (correctness lock):** `OnUpdate` runs the release path only `if (EarlyReleaseAvailable
+   && setting.EnableEarlyRelease)`. Held false ⇒ the path is dead regardless of any persisted
+   setting. `static readonly` (not `const`) so the compiler emits no unreachable-code warning —
+   build stays 0/0.
+2. **Setting (UI + value lock):** `EnableEarlyRelease` is now a guarded property whose getter is
+   `EarlyReleaseAvailable && m_EnableEarlyRelease` — reads false while locked, so the toggle shows
+   unchecked and its dependent grace-days slider disables even if an old settings file stored it
+   on. `IsEarlyReleaseLocked()` greys the toggle itself.
+3. **Locale / listing:** label gets "— coming soon", descriptions say it's locked pending
+   verification.
+
+**To unlock after verifying in-game:** set `EarlyReleaseAvailable = true`, bump ModVersion (→ 1.1.0
+suggested, since it restores a feature), update ChangeLog, rebuild, re-publish `NewVersion`. No
+other code changes needed — the guarded getter and system gate both revert to normal behaviour
+automatically. Then run the test recipe below.
 
 ## Test results (2026-07-17, first in-game session, default settings, real established city)
 

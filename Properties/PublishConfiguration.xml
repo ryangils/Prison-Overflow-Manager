@@ -14,7 +14,7 @@ Unlike blunt "remove crime" mods, the loop stays intact: you still build prisons
 - **Soft scaling** (on by default): raises the prison van capacity of every prison while sentenced criminals are piling up at police stations, and restores vanilla capacity once the backlog clears — nobody is released
 - **Configurable threshold** — how many criminals waiting for a prison van counts as a backlog
 - **Configurable scaled capacity** (100–500% of normal)
-- **Early release** (off by default): a last resort for saves where prisoners never get collected (e.g. a city with no prison), with a grace period of 1–30 in-game days
+- **Early release** (coming soon): a last resort for saves where prisoners never get collected (e.g. a city with no prison). The option is visible but locked while it's being verified in-game — it will be unlocked in a future update
 - Live backlog readout and peak-backlog stat to help you pick a threshold
 - **Adjustable sweep frequency** (1–64 scans per in-game day)
 - Lightweight: scans a few times per in-game day, no per-frame cost
@@ -24,7 +24,7 @@ Unlike blunt "remove crime" mods, the loop stays intact: you still build prisons
 - Only prison van capacity is scaled — prisoner holding capacity is left alone, so the "build more prisons" loop stays intact
 - Van capacity is always scaled from each prison's true vanilla value, so it never compounds
 - If another mod changes a prison's van capacity while scaling is active, this mod leaves that prison alone rather than overwriting it
-- Early release frees criminals the same way the game does when a sentence ends — nobody is deleted
+- When unlocked, early release will free criminals the same way the game does when a sentence ends — nobody is deleted
 - Safe to add or remove from a save at any time; switching the mod off restores vanilla capacity immediately
 - Source Code can be found on [GitHub](https://github.com/ryangils/Prison-Overflow-Manager)
   </LongDescription>
@@ -32,10 +32,10 @@ Unlike blunt "remove crime" mods, the loop stays intact: you still build prisons
   <Thumbnail Value="Properties/Thumbnail.png" />
   <Tag Value="Code Mod" />
   <ForumLink Value="https://forum.paradoxplaza.com/forum/threads/prison-overflow-manager-beta.1935235/" />
-  <ModVersion Value="1.0.0" />
+  <ModVersion Value="1.0.1" />
   <GameVersion Value="1.6.*" />
   <ChangeLog>
-Initial release.
+Locked the off-by-default Early Release option until it's verified in-game — the toggle is visible but greyed out, and the release code never runs. Soft scaling (the main feature) is unchanged. Early Release will be unlocked in a future update.
   </ChangeLog>
   <ExternalLink Type="github" Url="https://github.com/ryangils/Prison-Overflow-Manager" />
 </Publish>

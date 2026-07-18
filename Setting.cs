@@ -39,9 +39,18 @@ namespace PrisonOverflowManager
         [SettingsUISection(kSection, kScalingGroup)]
         public int ScaleFactor { get; set; }
 
-        [SettingsUIDisableByCondition(typeof(Setting), nameof(IsModDisabled))]
+        private bool m_EnableEarlyRelease;
+
+        [SettingsUIDisableByCondition(typeof(Setting), nameof(IsEarlyReleaseLocked))]
         [SettingsUISection(kSection, kReleaseGroup)]
-        public bool EnableEarlyRelease { get; set; }
+        public bool EnableEarlyRelease
+        {
+            // Locked off (always reads false) while the feature is being verified in-game — see
+            // PrisonOverflowSystem.EarlyReleaseAvailable. This keeps the toggle unchecked and its
+            // dependent grace-days slider disabled even if an older settings file stored it as on.
+            get => PrisonOverflowSystem.EarlyReleaseAvailable && m_EnableEarlyRelease;
+            set => m_EnableEarlyRelease = value;
+        }
 
         [SettingsUIDisableByCondition(typeof(Setting), nameof(IsEarlyReleaseDisabled))]
         [SettingsUISlider(min = 1, max = 30, step = 1, scalarMultiplier = 1, unit = Unit.kInteger)]
@@ -78,6 +87,11 @@ namespace PrisonOverflowManager
         public bool IsSoftScalingDisabled() => !EnableMod || !EnableSoftScaling;
 
         public bool IsEarlyReleaseDisabled() => !EnableMod || !EnableEarlyRelease;
+
+        // The early-release toggle itself is greyed out whenever the feature is locked (or the mod
+        // is off). When PrisonOverflowSystem.EarlyReleaseAvailable is flipped to true this reverts
+        // to behaving like every other option — enabled as long as the mod is on.
+        public bool IsEarlyReleaseLocked() => !EnableMod || !PrisonOverflowSystem.EarlyReleaseAvailable;
 
         public sealed override void SetDefaults()
         {
