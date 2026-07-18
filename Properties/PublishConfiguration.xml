@@ -20,6 +20,7 @@ Unlike blunt "remove crime" mods, the loop stays intact: you still build prisons
 - Lightweight: scans a few times per in-game day, no per-frame cost
 
 ## Notes
+- Unlike static capacity sliders, scaling only applies while a backlog exists — vanilla balance is untouched the rest of the time
 - Only prison van capacity is scaled — prisoner holding capacity is left alone, so the "build more prisons" loop stays intact
 - Van capacity is always scaled from each prison's true vanilla value, so it never compounds
 - If another mod changes a prison's van capacity while scaling is active, this mod leaves that prison alone rather than overwriting it
