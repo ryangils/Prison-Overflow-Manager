@@ -19,3 +19,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+Third-party notices
+
+This mod is an architectural port of the same author's Cemetery Overflow
+Manager. The underlying capacity-scaling techniques — scaling prefab data
+anchored to the authoring baseline, and restoring a value only if no other
+mod has changed it since — derive from the MIT-licensed mod
+"Magic Hearse + Funeral Director":
+
+    Copyright (c) 2026 River-Mochi
+    https://github.com/River-Mochi/MagicHearse
+    Licensed under the MIT License.
+
+This mod reimplements those techniques in original code; this notice
+acknowledges their origin and must be retained in copies or substantial
+portions of this software.

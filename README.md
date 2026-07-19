@@ -54,3 +54,13 @@ Because it only reads/writes vanilla components, it's save-safe and can be added
 - `LocaleEN.cs` — English strings for the options UI
 - `PrisonOverflowSystem.cs` — the backlog measurement, van scaling, and early-release logic
 - `Properties/PublishConfiguration.xml` — PDX Mods listing metadata
+
+## Credits
+
+- This mod is an architectural port of the author's Cemetery Overflow Manager to the
+  prison-transport domain. The underlying scaling techniques — writing prefab data (`PrisonData`
+  here) anchored to its **authoring baseline** so repeated writes never compound, and the
+  **"only restore a value if nothing else changed it since"** guard — derive from
+  [Magic Hearse + Funeral Director](https://github.com/River-Mochi/MagicHearse) by **River-Mochi**
+  (MIT). The backlog-triggered design and the code are original; the lineage of those techniques
+  is theirs. See the third-party notice in [LICENSE](LICENSE).

@@ -1,3 +1,11 @@
+// Attribution: this system is an architectural port of the author's Cemetery Overflow
+// Manager. Two core techniques — scaling prefab data (PrisonData here) anchored to its
+// authoring baseline, and restoring a value only if nothing else has changed it since —
+// derive from the MIT-licensed mod "Magic Hearse + Funeral Director",
+// Copyright (c) 2026 River-Mochi (https://github.com/River-Mochi/MagicHearse).
+// See the third-party notice in this project's LICENSE file. The backlog-triggered
+// temporary scaling, grace-period early release, and the code in this file are original.
+
 using System.Collections.Generic;
 using Game;
 using Game.Citizens;

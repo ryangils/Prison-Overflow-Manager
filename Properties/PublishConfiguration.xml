@@ -27,6 +27,9 @@ Unlike blunt "remove crime" mods, the loop stays intact: you still build prisons
 - When unlocked, early release will free criminals the same way the game does when a sentence ends — nobody is deleted
 - Safe to add or remove from a save at any time; switching the mod off restores vanilla capacity immediately
 - Source Code can be found on [GitHub](https://github.com/ryangils/Prison-Overflow-Manager)
+
+## Credits
+- Architectural port of my Cemetery Overflow Manager; the underlying scaling techniques (baseline-anchored prefab scaling and the restore-only-if-unchanged guard) derive from River-Mochi's MIT-licensed [Magic Hearse + Funeral Director](https://mods.paradoxplaza.com/mods/123497/Windows) — credit and thanks to River-Mochi
   </LongDescription>
   <!-- Add a 1:1 PNG (min 256x256) before publishing. -->
   <Thumbnail Value="Properties/Thumbnail.png" />
